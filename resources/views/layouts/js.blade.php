@@ -15,9 +15,7 @@
 <script src="https://cdn.amcharts.com/lib/4/themes/animated.js"></script>
 <!-- Base Js File -->
 <script src="{{ asset('assets') }}/js/base.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"
-    integrity="sha512-dQIiHSl2hr3NWKKLycPndtpbh5iaHLo6MwrXm7F0FM5e+kL2U16oE9uIwPHUl6fQBeCthiEuV/rzP3MiAB8Vfw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.26/webcam.min.js"></script>
 
 <script>
     am4core.ready(function() {
@@ -65,4 +63,27 @@
             am4core.color("#ba113b"),
         ];
     }); // end am4core.ready()
+
+    Webcam.set({
+        height: 480,
+        width: 640,
+        image - format: 'jpeg',
+        jpeg - quality: 80
+    });
+    Webcam.attach('.webcam-capture');
+
+    var lokasi = document.getElementById('lokasi');
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    }
+
+    function successCallback(position) {
+        lokasi.value = position.coords.latitude + ',' + position.coords.longitude;
+    }
+
+    function errorCallback() {
+
+    }
 </script>
+
+@stack('myscript')
