@@ -24,15 +24,14 @@ class PresensiController extends Controller
         $nbm = Auth::guard('karyawan')->user()->nbm;
         $tgl_presensi = date('Y-m-d');
         $jam = date('H:i:s');
-        $latitudekantor =  -7.3650198466841506;
-        $longitudekantor = 109.89890821666044;
+        $latitudekantor =  -7.3663602264956145;
+        $longitudekantor = 109.89610742469665;
         $lokasi = $request->lokasi;
         $lokasiuser = explode(",", $lokasi);
         $latitudeuser = $lokasiuser[0];
         $longitudeuser = $lokasiuser[1];
         $jarak = $this->distance($latitudekantor, $longitudekantor, $latitudeuser, $longitudeuser);
         $radius = round($jarak['meters']);
-        dd($radius);
         $image = $request->image;
         $forlderPath = "public/uploads/absensi/";
         $formatName = $nbm."_".$tgl_presensi;
@@ -94,7 +93,7 @@ class PresensiController extends Controller
         $feet = $miles * 5280;
         $yards = $feet / 3;
         $kilometers = $miles * 1.609344;
-        $meters = $kilometers * 1000;
+        $meters = $kilometers * 10000;
         return compact('meters');
     }
 }
