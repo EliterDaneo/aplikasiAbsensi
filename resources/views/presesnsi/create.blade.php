@@ -32,15 +32,14 @@
 @endsection
 
 @push('myscript')
-    <script>
+    <script language="JavaScript">
         Webcam.set({
             height: 480,
-            width: 640,
-            image - format: 'jpeg',
-            jpeg - quality: 80
+            width: 440,
+            image_format: 'jpeg',
+            jpeg_quality: 80
         });
         Webcam.attach('.webcam-capture');
-
         var lokasi = document.getElementById('lokasi');
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
@@ -50,8 +49,6 @@
             lokasi.value = position.coords.latitude + ',' + position.coords.longitude;
         }
 
-        function errorCallback() {
-
-        }
+        function errorCallback() {}
     </script>
 @endpush
